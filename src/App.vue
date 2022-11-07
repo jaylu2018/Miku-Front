@@ -1,25 +1,21 @@
 <template>
-  <div class="app">
-    <el-button type="primary">hh</el-button>
-  </div>
+  <ConfigProvider :locale="getAntdLocale">
+    <AppProvider>
+      <RouterView />
+    </AppProvider>
+  </ConfigProvider>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { ConfigProvider } from 'ant-design-vue'
+import { AppProvider } from '/@/components/Application'
+import { useTitle } from '/@/hooks/web/useTitle'
+import { useLocale } from '/@/locales/useLocale'
 
-export default defineComponent({
-  name: 'App',
-  components: {}
-})
+import 'dayjs/locale/zh-cn'
+// support Multi-language
+const { getAntdLocale } = useLocale()
+
+// Listening to page changes and dynamically changing site titles
+useTitle()
 </script>
-
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
