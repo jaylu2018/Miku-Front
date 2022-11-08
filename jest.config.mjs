@@ -8,15 +8,15 @@ export default {
   testMatch: [
     '**/tests/**/*.[jt]s?(x)',
     '**/?(*.)+(spec|test).[tj]s?(x)',
-    '(/__tests__/.*|(\\.|/)(test|spec))\\.(js|ts)$',
+    '(/__tests__/.*|(\\.|/)(test|spec))\\.(js|ts)$'
   ],
   testPathIgnorePatterns: [
     '<rootDir>/tests/server/',
     '<rootDir>/tests/__mocks__/',
-    '/node_modules/',
+    '/node_modules/'
   ],
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.tsx?$': 'ts-jest'
   },
   transformIgnorePatterns: ['<rootDir>/tests/__mocks__/', '/node_modules/'],
   // A map from regular expressions to module names that allow to stub out resources with a single module
@@ -25,12 +25,12 @@ export default {
       '<rootDir>/tests/__mocks__/fileMock.ts',
     '\\.(sass|s?css|less)$': '<rootDir>/tests/__mocks__/styleMock.ts',
     '\\?worker$': '<rootDir>/tests/__mocks__/workerMock.ts',
-    '^/@/(.*)$': '<rootDir>/src/$1',
+    '^/@/(.*)$': '<rootDir>/src/$1'
   },
   testEnvironment: 'jsdom',
   verbose: true,
   collectCoverage: false,
   coverageDirectory: 'coverage',
   collectCoverageFrom: ['src/**/*.{js,ts,vue}'],
-  coveragePathIgnorePatterns: ['^.+\\.d\\.ts$'],
-};
+  coveragePathIgnorePatterns: ['^.+\\.d\\.ts$']
+}

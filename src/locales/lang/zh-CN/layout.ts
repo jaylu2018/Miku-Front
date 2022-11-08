@@ -18,7 +18,7 @@ export default {
     lockScreen: '锁定屏幕',
     lockScreenBtn: '锁定',
 
-    home: '首页',
+    home: '首页'
   },
   multipleTab: {
     reload: '重新加载',
@@ -26,7 +26,7 @@ export default {
     closeLeft: '关闭左侧标签页',
     closeRight: '关闭右侧标签页',
     closeOther: '关闭其它标签页',
-    closeAll: '关闭全部标签页',
+    closeAll: '关闭全部标签页'
   },
   setting: {
     // content mode
@@ -51,7 +51,8 @@ export default {
     minute: '分钟',
 
     operatingTitle: '操作成功',
-    operatingContent: '复制成功,请到 src/settings/projectSetting.ts 中修改配置！',
+    operatingContent:
+      '复制成功,请到 src/settings/projectSetting.ts 中修改配置！',
     resetSuccess: '重置成功！',
 
     copyBtn: '拷贝',
@@ -110,6 +111,6 @@ export default {
     triggerHover: '悬停',
     triggerClick: '点击',
 
-    mixSidebarFixed: '固定展开菜单',
-  },
-};
+    mixSidebarFixed: '固定展开菜单'
+  }
+}

@@ -1,7 +1,7 @@
-import type { AppRouteModule } from '/@/router/types';
+import type { AppRouteModule } from '/@/router/types'
 
-import { LAYOUT } from '/@/router/constant';
-import { t } from '/@/hooks/web/useI18n';
+import { LAYOUT } from '/@/router/constant'
+import { t } from '/@/hooks/web/useI18n'
 
 const setup: AppRouteModule = {
   path: '/setup',
@@ -10,9 +10,10 @@ const setup: AppRouteModule = {
   redirect: '/setup/index',
   meta: {
     orderNo: 90000,
+    hideMenu: true,
     hideChildrenInMenu: true,
     icon: 'whh:paintroll',
-    title: t('routes.demo.setup.page'),
+    title: t('routes.demo.setup.page')
   },
   children: [
     {
@@ -22,10 +23,10 @@ const setup: AppRouteModule = {
       meta: {
         title: t('routes.demo.setup.page'),
         icon: 'whh:paintroll',
-        hideMenu: true,
-      },
-    },
-  ],
-};
+        hideMenu: true
+      }
+    }
+  ]
+}
 
-export default setup;
+export default setup

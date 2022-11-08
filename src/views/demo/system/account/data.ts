@@ -1,111 +1,110 @@
-import { FormSchema } from '/@/components/Form/index';
-import { TabItem } from '/@/views/demo/page/account/center/data';
+import { FormSchema } from '/@/components/Form/index'
+import { TabItem } from '/@/views/demo/page/account/center/data'
 
 const requestModeOptions: LabelValueOptions = [
   {
     label: 'GET',
-    value: 'GET',
+    value: 'GET'
   },
   {
     label: 'POST',
-    value: 'POST',
+    value: 'POST'
   },
   {
     label: 'PUT',
-    value: 'PUT',
+    value: 'PUT'
   },
   {
     label: 'DELETE',
-    value: 'DELETE',
-  },
-];
+    value: 'DELETE'
+  }
+]
 const casePriorityOptions: LabelValueOptions = [
   {
     label: 'P0',
-    value: '0',
+    value: '0'
   },
   {
     label: 'P1',
-    value: '1',
+    value: '1'
   },
   {
     label: 'P2',
-    value: '2',
+    value: '2'
   },
   {
     label: 'P3',
-    value: '3',
-  },
-];
+    value: '3'
+  }
+]
 const caseStatusOptions: LabelValueOptions = [
   {
     label: '正常',
-    value: 'normal',
+    value: 'normal'
   },
   {
     label: '调试中',
-    value: 'testing',
+    value: 'testing'
   },
   {
     label: '停用',
-    value: 'disabled',
-  },
-];
+    value: 'disabled'
+  }
+]
 const requestTypeOptions: LabelValueOptions = [
   {
     label: 'HTTP',
-    value: 'HTTP',
+    value: 'HTTP'
   },
   {
     label: 'Dubbo',
-    value: 'Dubbo',
+    value: 'Dubbo'
   },
   {
     label: 'RPC',
-    value: 'RPC',
+    value: 'RPC'
   },
   {
     label: 'Websocket',
-    value: 'Websocket',
-  },
-
-];
+    value: 'Websocket'
+  }
+]
 const caseLabelOptions: LabelValueOptions = [
   {
     label: '主流程',
-    value: 'Main',
+    value: 'Main'
   },
   {
     label: '基线案例',
-    value: 'Baseline',
+    value: 'Baseline'
   },
   {
     label: '异常案例',
-    value: 'Abnormal',
+    value: 'Abnormal'
   },
   {
     label: '单接口案例',
-    value: 'Single',
+    value: 'Single'
   },
   {
     label: '自动生成案例',
-    value: 'Auto',
-  },
-];
+    value: 'Auto'
+  }
+]
 const caseTypeOptions: LabelValueOptions = [
   {
     label: '普通案例',
-    value: 'Normal',
+    value: 'Normal'
   },
   {
     label: '自动化案例',
-    value: 'Auto',
+    value: 'Auto'
   },
   {
     label: '基线案例',
-    value: 'Baseline',
-  },
-];
+    value: 'Baseline'
+  }
+]
 
 export const schemas: FormSchema[] = [
   {
@@ -114,11 +113,11 @@ export const schemas: FormSchema[] = [
     label: '请求方式',
     required: true,
     componentProps: {
-      options: requestModeOptions,
+      options: requestModeOptions
     },
     colProps: {
-      span: 4,
-    },
+      span: 4
+    }
   },
   {
     field: 'requestAddress',
@@ -127,16 +126,16 @@ export const schemas: FormSchema[] = [
     required: true,
     colProps: {
       offset: 2,
-      span: 10,
-    },
-  },
-];
+      span: 10
+    }
+  }
+]
 export const taskSchemas: FormSchema[] = [
   {
     field: 'caseName',
     component: 'Input',
     label: '用例名称',
-    required: true,
+    required: true
   },
   {
     field: 'casePriority',
@@ -144,32 +143,32 @@ export const taskSchemas: FormSchema[] = [
     label: '用例优先级',
     required: true,
     componentProps: {
-      options: casePriorityOptions,
+      options: casePriorityOptions
     },
     colProps: {
-      offset: 2,
-    },
+      offset: 2
+    }
   },
   {
     field: 'caseStatus',
     component: 'Select',
     label: '用例状态',
     componentProps: {
-      options: caseStatusOptions,
+      options: caseStatusOptions
     },
     colProps: {
-      offset: 2,
+      offset: 2
     },
-    required: true,
+    required: true
   },
   {
     field: 'requestType',
     component: 'Select',
     label: '请求类型',
     componentProps: {
-      options: requestTypeOptions,
+      options: requestTypeOptions
     },
-    required: true,
+    required: true
   },
   {
     field: 'caseLabel',
@@ -178,11 +177,11 @@ export const taskSchemas: FormSchema[] = [
     required: true,
     componentProps: {
       mode: 'multiple',
-      options: caseLabelOptions,
+      options: caseLabelOptions
     },
     colProps: {
-      offset: 2,
-    },
+      offset: 2
+    }
   },
   {
     field: 'caseType',
@@ -190,11 +189,11 @@ export const taskSchemas: FormSchema[] = [
     label: '用例类型',
     componentProps: {
       mode: 'multiple',
-      options: caseTypeOptions,
+      options: caseTypeOptions
     },
     colProps: {
-      offset: 2,
+      offset: 2
     },
-    required: true,
-  },
-];
+    required: true
+  }
+]

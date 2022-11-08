@@ -1,7 +1,7 @@
-import type { AppRouteModule } from '/@/router/types';
+import type { AppRouteModule } from '/@/router/types'
 
-import { LAYOUT } from '/@/router/constant';
-import { t } from '/@/hooks/web/useI18n';
+import { LAYOUT } from '/@/router/constant'
+import { t } from '/@/hooks/web/useI18n'
 
 const charts: AppRouteModule = {
   path: '/flow',
@@ -10,8 +10,9 @@ const charts: AppRouteModule = {
   redirect: '/flow/flowChart',
   meta: {
     orderNo: 5000,
+    hideMenu: true,
     icon: 'tabler:chart-dots',
-    title: t('routes.demo.flow.name'),
+    title: t('routes.demo.flow.name')
   },
   children: [
     {
@@ -19,10 +20,10 @@ const charts: AppRouteModule = {
       name: 'flowChartDemo',
       component: () => import('/@/views/demo/comp/flow-chart/index.vue'),
       meta: {
-        title: t('routes.demo.flow.flowChart'),
-      },
-    },
-  ],
-};
+        title: t('routes.demo.flow.flowChart')
+      }
+    }
+  ]
+}
 
-export default charts;
+export default charts

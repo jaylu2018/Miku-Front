@@ -3,7 +3,7 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    es6: true,
+    es6: true
   },
   parser: 'vue-eslint-parser',
   parserOptions: {
@@ -12,15 +12,12 @@ module.exports = {
     sourceType: 'module',
     jsxPragma: 'React',
     ecmaFeatures: {
-      jsx: true,
-    },
+      jsx: true
+    }
   },
   extends: [
-    'plugin:vue/vue3-essential',
-    'eslint:recommended',
-    '@vue/typescript/recommended',
-    '@vue/prettier',
-    '@vue/prettier/@typescript-eslint',
+    'plugin:vue/vue3-recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended'
   ],
   rules: {
@@ -41,15 +38,15 @@ module.exports = {
       'error',
       {
         argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-      },
+        varsIgnorePattern: '^_'
+      }
     ],
     'no-unused-vars': [
       'error',
       {
         argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-      },
+        varsIgnorePattern: '^_'
+      }
     ],
     'space-before-function-paren': 'off',
     'vue/attributes-order': 'off',
@@ -67,12 +64,12 @@ module.exports = {
         html: {
           void: 'always',
           normal: 'never',
-          component: 'always',
+          component: 'always'
         },
         svg: 'always',
-        math: 'always',
-      },
+        math: 'always'
+      }
     ],
-    'vue/multi-word-component-names': 'off',
-  },
-};
+    'vue/multi-word-component-names': 'off'
+  }
+}
