@@ -10,7 +10,6 @@ const comp: AppRouteModule = {
   redirect: '/comp/basic',
   meta: {
     orderNo: 30,
-    hideMenu: true,
     icon: 'ion:layers-outline',
     title: t('routes.demo.comp.comp')
   },

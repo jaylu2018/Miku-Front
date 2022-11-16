@@ -63,7 +63,7 @@ export default defineComponent({
       } catch (error) {}
     }
 
-    return { register, registerTask, submitAll, tableRef }
+    return { register, caseInfo: registerTask, submitAll, tableRef }
   }
 })
 </script>

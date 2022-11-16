@@ -50,6 +50,15 @@ const page: AppRouteModule = {
           meta: {
             title: t('routes.demo.page.formHigh')
           }
+        },
+        {
+          path: 'interface',
+          name: 'FormInterfacePage',
+          component: () =>
+            import('/@/views/demo/page/form/interface/index.vue'),
+          meta: {
+            title: t('routes.demo.page.formInterface')
+          }
         }
       ]
     },

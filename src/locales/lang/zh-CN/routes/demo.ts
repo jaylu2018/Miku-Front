@@ -121,6 +121,7 @@ export default {
     formBasic: '基础表单',
     formStep: '分步表单',
     formHigh: '高级表单',
+    formInterface: '接口管理',
 
     desc: '详情页',
     descBasic: '基础详情页',
