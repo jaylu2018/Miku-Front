@@ -8,9 +8,10 @@ import {
 import { ErrorMessageMode } from '/#/axios'
 
 enum Api {
-  Login = '/login',
+  Login = '/users/login',
   Logout = '/logout',
-  GetUserInfo = '/getUserInfo',
+  GetUserInfo = '/users/1/',
+  // GetUserInfo = '/getUserInfo',
   GetPermCode = '/getPermCode'
 }
 
@@ -27,6 +28,7 @@ export function loginApi(
       params
     },
     {
+      apiUrl: '/apis',
       errorMessageMode: mode
     }
   )
@@ -38,7 +40,10 @@ export function loginApi(
 export function getUserInfo() {
   return defHttp.get<GetUserInfoModel>(
     { url: Api.GetUserInfo },
-    { errorMessageMode: 'none' }
+    {
+      apiUrl: '/apis',
+      errorMessageMode: 'none'
+    }
   )
 }
 
