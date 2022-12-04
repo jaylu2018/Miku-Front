@@ -58,9 +58,6 @@
       >
         {{ t('sys.login.loginButton') }}
       </Button>
-      <!-- <Button size="large" class="mt-4 enter-x" block @click="handleRegister">
-        {{ t('sys.login.registerButton') }}
-      </Button> -->
     </FormItem>
     <ARow class="enter-x">
       <ACol :md="12" :xs="24">
@@ -68,48 +65,18 @@
           {{ t('sys.login.mobileSignInFormTitle') }}
         </Button>
       </ACol>
-      <!--      <ACol :md="8" :xs="24" class="!my-2 !md:my-0 xs:mx-0 md:mx-2">-->
-      <!--        <Button block @click="setLoginState(LoginStateEnum.QR_CODE)">-->
-      <!--          {{ t('sys.login.qrSignInFormTitle') }}-->
-      <!--        </Button>-->
-      <!--      </ACol>-->
       <ACol :md="12" :xs="24">
         <Button block @click="setLoginState(LoginStateEnum.REGISTER)">
           {{ t('sys.login.registerButton') }}
         </Button>
       </ACol>
     </ARow>
-
-    <!--    <Divider class="enter-x">{{ t('sys.login.otherSignIn') }}</Divider>-->
-
-    <!--    <div class="flex justify-evenly enter-x" :class="`${prefixCls}-sign-in-way`">-->
-    <!--      <GithubFilled />-->
-    <!--      <WechatFilled />-->
-    <!--      <AlipayCircleFilled />-->
-    <!--      <GoogleCircleFilled />-->
-    <!--      <TwitterCircleFilled />-->
-    <!--    </div>-->
   </Form>
 </template>
 <script lang="ts" setup>
 import { reactive, ref, unref, computed } from 'vue'
 
-import {
-  Checkbox,
-  Form,
-  Input,
-  Row,
-  Col,
-  Button,
-  Divider
-} from 'ant-design-vue'
-import {
-  GithubFilled,
-  WechatFilled,
-  AlipayCircleFilled,
-  GoogleCircleFilled,
-  TwitterCircleFilled
-} from '@ant-design/icons-vue'
+import { Checkbox, Form, Input, Row, Col, Button } from 'ant-design-vue'
 import LoginFormTitle from './LoginFormTitle.vue'
 
 import { useI18n } from '/@/hooks/web/useI18n'
@@ -123,7 +90,6 @@ import {
   useFormValid
 } from './useLogin'
 import { useDesign } from '/@/hooks/web/useDesign'
-//import { onKeyStroke } from '@vueuse/core';
 
 const ACol = Col
 const ARow = Row
@@ -147,8 +113,6 @@ const formData = reactive({
 })
 
 const { validForm } = useFormValid(formRef)
-
-//onKeyStroke('Enter', handleLogin);
 
 const getShow = computed(() => unref(getLoginState) === LoginStateEnum.LOGIN)
 

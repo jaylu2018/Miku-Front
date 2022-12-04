@@ -169,6 +169,10 @@ export default {
     menu: '菜单管理',
     role: '角色管理'
   },
+  project: {
+    manage: '项目管理',
+    project_detail: '项目详情'
+  },
   table: {
     table: 'Table',
     basic: '基础表格',

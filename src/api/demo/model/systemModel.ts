@@ -6,8 +6,10 @@ export type AccountParams = BasicPageParams & {
 }
 
 export type RoleParams = {
-  roleName?: string
+  name?: string
   status?: string
+  is_admin?: string
+  desc?: string
 }
 
 export type RolePageParams = BasicPageParams & RoleParams

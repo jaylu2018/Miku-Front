@@ -11,6 +11,12 @@ import {
   RoleListGetResultModel
 } from './model/systemModel'
 import { defHttp } from '/@/utils/http/axios'
+import {
+  GetUserInfoModel,
+  LoginParams,
+  LoginResultModel
+} from '/@/api/sys/model/userModel'
+import { ErrorMessageMode } from '/#/axios'
 
 enum Api {
   AccountList = '/system/getAccountList',
@@ -18,7 +24,7 @@ enum Api {
   DeptList = '/system/getDeptList',
   setRoleStatus = '/system/setRoleStatus',
   MenuList = '/system/getMenuList',
-  RolePageList = '/system/getRoleListByPage',
+  Roles = '/system/roles/',
   GetAllRoleList = '/system/getAllRoleList'
 }
 
@@ -32,14 +38,81 @@ export const getMenuList = (params?: MenuParams) =>
   defHttp.get<MenuListGetResultModel>({ url: Api.MenuList, params })
 
 export const getRoleListByPage = (params?: RolePageParams) =>
-  defHttp.get<RolePageListGetResultModel>({ url: Api.RolePageList, params })
+  defHttp.get<RolePageListGetResultModel>(
+    {
+      url: Api.Roles,
+      params
+    },
+    {
+      apiUrl: '/apis',
+      errorMessageMode: 'none'
+    }
+  )
 
+export function createRole(
+  params: RoleParams,
+  mode: ErrorMessageMode = 'modal'
+) {
+  return defHttp.post(
+    {
+      url: Api.Roles,
+      params
+    },
+    {
+      apiUrl: '/apis',
+      errorMessageMode: mode
+    }
+  )
+}
+
+export function updateRole(
+  id: string,
+  params: RoleParams,
+  mode: ErrorMessageMode = 'modal'
+) {
+  return defHttp.put(
+    {
+      url: Api.Roles + id + '/',
+      params
+    },
+    {
+      apiUrl: '/apis',
+      errorMessageMode: mode
+    }
+  )
+}
+
+export function deleteRole(id: string, mode: ErrorMessageMode = 'modal') {
+  return defHttp.delete(
+    {
+      url: Api.Roles + id + '/'
+    },
+    {
+      apiUrl: '/apis',
+      errorMessageMode: mode
+    }
+  )
+}
 export const getAllRoleList = (params?: RoleParams) =>
   defHttp.get<RoleListGetResultModel>({ url: Api.GetAllRoleList, params })
 
-export const setRoleStatus = (id: number, status: string) =>
-  defHttp.post({ url: Api.setRoleStatus, params: { id, status } })
+export const setRoleStatus = (id: number, name: string, status: string) =>
+  defHttp.put(
+    { url: Api.Roles + id + '/', params: { name, status } },
+    {
+      apiUrl: '/apis',
+      errorMessageMode: 'modal'
+    }
+  )
 
+export const setIsAdmin = (id: number, name: string, is_admin: string) =>
+  defHttp.put(
+    { url: Api.Roles + id + '/', params: { name, is_admin } },
+    {
+      apiUrl: '/apis',
+      errorMessageMode: 'modal'
+    }
+  )
 export const isAccountExist = (account: string) =>
   defHttp.post(
     { url: Api.IsAccountExist, params: { account } },

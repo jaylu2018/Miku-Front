@@ -28,15 +28,14 @@
 </template>
 <script setup lang="ts">
 import { BasicTable, useTable, TableAction } from '/@/components/Table'
-import { deleteRole, getRoleListByPage, setIsAdmin } from '/@/api/demo/system'
+import { getRoleListByPage } from '/@/api/demo/system'
 import { useDrawer } from '/@/components/Drawer'
 import RoleDrawer from './RoleDrawer.vue'
 import { columns, searchFormSchema } from './role.data'
-import { useMessage } from '/@/hooks/web/useMessage'
 
 const [registerDrawer, { openDrawer }] = useDrawer()
 const [registerTable, { reload }] = useTable({
-  title: '角色列表',
+  title: '用户列表',
   api: getRoleListByPage,
   columns,
   formConfig: {
@@ -70,17 +69,7 @@ function handleEdit(record: Recordable) {
 }
 
 function handleDelete(record: Recordable) {
-  const { createMessage } = useMessage()
-  deleteRole(record.id)
-    .then(() => {
-      createMessage.success(`已成功删除角色`)
-    })
-    .catch(() => {
-      createMessage.error('删除角色失败')
-    })
-    .finally(() => {
-      reload()
-    })
+  console.log(record)
 }
 
 function handleSuccess() {
