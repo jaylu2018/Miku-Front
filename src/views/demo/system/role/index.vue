@@ -28,7 +28,7 @@
 </template>
 <script setup lang="ts">
 import { BasicTable, useTable, TableAction } from '/@/components/Table'
-import { deleteRole, getRoleListByPage, setIsAdmin } from '/@/api/demo/system'
+import { deleteRole, getRoleListByPage } from '/@/api/demo/system'
 import { useDrawer } from '/@/components/Drawer'
 import RoleDrawer from './RoleDrawer.vue'
 import { columns, searchFormSchema } from './role.data'

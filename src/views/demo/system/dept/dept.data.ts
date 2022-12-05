@@ -1,46 +1,64 @@
 import { BasicColumn } from '/@/components/Table'
 import { FormSchema } from '/@/components/Table'
 import { h } from 'vue'
-import { Tag } from 'ant-design-vue'
+import { Switch, Tag } from 'ant-design-vue'
+import { useMessage } from '/@/hooks/web/useMessage'
+import { setRoleStatus } from '/@/api/demo/system'
 
 export const columns: BasicColumn[] = [
   {
     title: '部门名称',
-    dataIndex: 'deptName',
+    dataIndex: 'name',
     width: 160,
     align: 'left'
-  },
-  {
-    title: '排序',
-    dataIndex: 'orderNo',
-    width: 50
   },
   {
     title: '状态',
     dataIndex: 'status',
     width: 80,
     customRender: ({ record }) => {
-      const status = record.status
-      const enable = ~~status === 0
-      const color = enable ? 'green' : 'red'
-      const text = enable ? '启用' : '停用'
-      return h(Tag, { color: color }, () => text)
+      if (!Reflect.has(record, 'pendingStatus')) {
+        record.pendingStatus = false
+      }
+      return h(Switch, {
+        checked: record.status === true,
+        checkedChildren: '启用',
+        unCheckedChildren: '禁用',
+        loading: record.pendingStatus,
+        onChange(checked: boolean) {
+          record.pendingStatus = true
+          const newStatus = checked
+          const { createMessage } = useMessage()
+          setRoleStatus(record.id, record.name, String(newStatus))
+            .then(() => {
+              record.status = newStatus
+              createMessage.success(`已成功修改部门状态`)
+            })
+            .catch(() => {
+              createMessage.error('修改角色部门失败')
+            })
+            .finally(() => {
+              record.pendingStatus = false
+            })
+        }
+      })
     }
   },
   {
     title: '创建时间',
-    dataIndex: 'createTime',
+    dataIndex: 'create_time',
     width: 180
   },
   {
     title: '备注',
-    dataIndex: 'remark'
+    dataIndex: 'desc',
+    width: 120
   }
 ]
 
 export const searchFormSchema: FormSchema[] = [
   {
-    field: 'deptName',
+    field: 'name',
     label: '部门名称',
     component: 'Input',
     colProps: { span: 8 }
@@ -51,8 +69,8 @@ export const searchFormSchema: FormSchema[] = [
     component: 'Select',
     componentProps: {
       options: [
-        { label: '启用', value: '0' },
-        { label: '停用', value: '1' }
+        { label: '启用', value: false },
+        { label: '停用', value: true }
       ]
     },
     colProps: { span: 8 }
@@ -61,7 +79,7 @@ export const searchFormSchema: FormSchema[] = [
 
 export const formSchema: FormSchema[] = [
   {
-    field: 'deptName',
+    field: 'name',
     label: '部门名称',
     component: 'Input',
     required: true
@@ -73,7 +91,7 @@ export const formSchema: FormSchema[] = [
 
     componentProps: {
       fieldNames: {
-        label: 'deptName',
+        label: 'name',
         key: 'id',
         value: 'id'
       },
@@ -82,27 +100,21 @@ export const formSchema: FormSchema[] = [
     required: true
   },
   {
-    field: 'orderNo',
-    label: '排序',
-    component: 'InputNumber',
-    required: true
-  },
-  {
     field: 'status',
     label: '状态',
     component: 'RadioButtonGroup',
-    defaultValue: '0',
+    defaultValue: true,
     componentProps: {
       options: [
-        { label: '启用', value: '0' },
-        { label: '停用', value: '1' }
+        { label: '启用', value: false },
+        { label: '停用', value: true }
       ]
     },
     required: true
   },
   {
     label: '备注',
-    field: 'remark',
+    field: 'desc',
     component: 'InputTextArea'
   }
 ]

@@ -11,18 +11,12 @@ import {
   RoleListGetResultModel
 } from './model/systemModel'
 import { defHttp } from '/@/utils/http/axios'
-import {
-  GetUserInfoModel,
-  LoginParams,
-  LoginResultModel
-} from '/@/api/sys/model/userModel'
 import { ErrorMessageMode } from '/#/axios'
 
 enum Api {
   AccountList = '/system/getAccountList',
   IsAccountExist = '/system/accountExist',
-  DeptList = '/system/getDeptList',
-  setRoleStatus = '/system/setRoleStatus',
+  Depts = '/system/depts/',
   MenuList = '/system/getMenuList',
   Roles = '/system/roles/',
   GetAllRoleList = '/system/getAllRoleList'
@@ -32,8 +26,32 @@ export const getAccountList = (params: AccountParams) =>
   defHttp.get<AccountListGetResultModel>({ url: Api.AccountList, params })
 
 export const getDeptList = (params?: DeptListItem) =>
-  defHttp.get<DeptListGetResultModel>({ url: Api.DeptList, params })
+  defHttp.get<DeptListGetResultModel>(
+    {
+      url: Api.Depts,
+      params
+    },
+    {
+      apiUrl: '/apis',
+      errorMessageMode: 'modal'
+    }
+  )
 
+export function createDept(
+  params: DeptListItem,
+  mode: ErrorMessageMode = 'modal'
+) {
+  return defHttp.post(
+    {
+      url: Api.Depts,
+      params
+    },
+    {
+      apiUrl: '/apis',
+      errorMessageMode: mode
+    }
+  )
+}
 export const getMenuList = (params?: MenuParams) =>
   defHttp.get<MenuListGetResultModel>({ url: Api.MenuList, params })
 

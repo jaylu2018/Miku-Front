@@ -6,9 +6,9 @@ export type AccountParams = BasicPageParams & {
 }
 
 export type RoleParams = {
-  name?: string
-  status?: string
-  is_admin?: string
+  name: string
+  status: string
+  is_admin: string
   desc?: string
 }
 
@@ -36,11 +36,9 @@ export interface AccountListItem {
 }
 
 export interface DeptListItem {
-  id: string
-  orderNo: string
-  createTime: string
-  remark: string
+  name: String
   status: number
+  desc?: string
 }
 
 export interface MenuListItem {
