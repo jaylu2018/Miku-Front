@@ -31,9 +31,9 @@ const project: AppRouteModule = {
         title: t('routes.demo.project.project_detail'),
         ignoreKeepAlive: true,
         showMenu: false,
-        currentActiveMenu: '/project/project'
+        currentActiveMenu: '/project/manage'
       },
-      component: () => import('/@/views/demo/project/project/ProjectDetail.vue')
+      component: () => import('/@/views/demo/project/manage/AccountDetail.vue')
     },
     {
       path: 'menu',
