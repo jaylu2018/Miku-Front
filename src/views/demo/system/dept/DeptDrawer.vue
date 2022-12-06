@@ -39,7 +39,7 @@ const [registerDrawer, { setDrawerProps, closeDrawer }] = useDrawerInner(
     }
     const treeData = await getDeptList()
     updateSchema({
-      field: 'parentDept',
+      field: 'parent',
       componentProps: { treeData }
     })
   }
@@ -64,6 +64,7 @@ async function handleSubmit() {
       const data = await createDept({
         name: values.name,
         status: values.status,
+        parent: values.parent,
         desc: values.desc
       })
       console.log(data)

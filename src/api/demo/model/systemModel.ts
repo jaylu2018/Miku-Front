@@ -38,6 +38,7 @@ export interface AccountListItem {
 export interface DeptListItem {
   name: String
   status: number
+  parent?: String
   desc?: string
 }
 

@@ -1,7 +1,7 @@
 import { BasicColumn } from '/@/components/Table'
 import { FormSchema } from '/@/components/Table'
 import { h } from 'vue'
-import { Switch } from 'ant-design-vue'
+import { Switch} from 'ant-design-vue'
 import { useMessage } from '/@/hooks/web/useMessage'
 import { setRoleStatus } from '/@/api/demo/system'
 
@@ -85,12 +85,15 @@ export const formSchema: FormSchema[] = [
     required: true
   },
   {
-    field: 'parentDept',
+    field: 'parent',
     label: '上级部门',
     component: 'TreeSelect',
+
     componentProps: {
       fieldNames: {
-        label: 'name'
+        label: 'name',
+        key: 'id',
+        value: 'id'
       },
       getPopupContainer: () => document.body
     },
@@ -103,8 +106,8 @@ export const formSchema: FormSchema[] = [
     defaultValue: true,
     componentProps: {
       options: [
-        { label: '启用', value: false },
-        { label: '停用', value: true }
+        { label: '启用', value: true },
+        { label: '停用', value: false }
       ]
     },
     required: true
