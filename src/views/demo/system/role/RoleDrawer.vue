@@ -34,7 +34,6 @@ const [registerDrawer, { setDrawerProps, closeDrawer }] = useDrawerInner(
       setFieldsValue({
         ...data.record
       })
-      console.log('dewewdwedwe', data.record)
     }
   }
 )

@@ -79,6 +79,13 @@ export const searchFormSchema: FormSchema[] = [
 
 export const formSchema: FormSchema[] = [
   {
+    field: 'id',
+    label: '部门ID',
+    required: false,
+    component: 'Input',
+    show: false
+  },
+  {
     field: 'name',
     label: '部门名称',
     component: 'Input',
@@ -97,7 +104,7 @@ export const formSchema: FormSchema[] = [
       },
       getPopupContainer: () => document.body
     },
-    required: true
+    required: false
   },
   {
     field: 'status',

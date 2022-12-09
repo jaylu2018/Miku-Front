@@ -28,10 +28,11 @@
 </template>
 <script setup lang="ts">
 import { BasicTable, useTable, TableAction } from '/@/components/Table'
-import { getDeptList } from '/@/api/demo/system'
+import { deleteDept, deleteRole, getDeptList } from '/@/api/demo/system'
 import { columns, searchFormSchema } from './dept.data'
 import DeptDrawer from '/@/views/demo/system/dept/DeptDrawer.vue'
 import { useDrawer } from '/@/components/Drawer'
+import { useMessage } from '/@/hooks/web/useMessage'
 
 const [registerDrawer, { openDrawer }] = useDrawer()
 const [registerTable, { reload }] = useTable({
@@ -69,7 +70,17 @@ function handleEdit(record: Recordable) {
 }
 
 function handleDelete(record: Recordable) {
-  console.log(record)
+  const { createMessage } = useMessage()
+  deleteDept(record.id)
+    .then(() => {
+      createMessage.success(`已成功删除角色`)
+    })
+    .catch(() => {
+      createMessage.error('删除角色失败')
+    })
+    .finally(() => {
+      reload()
+    })
 }
 
 function handleSuccess() {

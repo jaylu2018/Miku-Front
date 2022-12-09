@@ -52,6 +52,35 @@ export function createDept(
     }
   )
 }
+
+export function updateDept(
+  id: string,
+  params: DeptListItem,
+  mode: ErrorMessageMode = 'modal'
+) {
+  return defHttp.put(
+    {
+      url: Api.Depts + id + '/',
+      params
+    },
+    {
+      apiUrl: '/apis',
+      errorMessageMode: mode
+    }
+  )
+}
+
+export function deleteDept(id: string, mode: ErrorMessageMode = 'modal') {
+  return defHttp.delete(
+    {
+      url: Api.Depts + id + '/'
+    },
+    {
+      apiUrl: '/apis',
+      errorMessageMode: mode
+    }
+  )
+}
 export const getMenuList = (params?: MenuParams) =>
   defHttp.get<MenuListGetResultModel>({ url: Api.MenuList, params })
 
